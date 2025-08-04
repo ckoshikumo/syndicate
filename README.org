@@ -1,0 +1,14 @@
+*Syndicate* is a task queue implementation backed by a pool of worker threads. Get it? Syndicate? Lots of workers? Damn, I'm so smart.
+
+It follows the usual C header library style: you choose one .c file to hold the implementation. Besides that, It depends on *twine*, another of my little C libs, so you have to do something like this:
+
+#+begin_src C 
+
+#define SYNDICATE_IMPLEMENTATION
+#include "../path/to/twine.h"
+
+#include "twine.h"
+
+#+end_src
+
+A real readme is forthcoming.
