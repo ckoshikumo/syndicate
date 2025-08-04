@@ -75,7 +75,6 @@ SYN_API int syn_batch_submit(syndicate_s *pool, syn_task_batch_s batch);
 
 #ifdef SYNDICATE_IMPLEMENTATION
 
-#include "twine.h"
 #include <stdlib.h>
 
 // Types and structs
@@ -136,8 +135,6 @@ static syn_batch_entry_s *get_empty_batch_entry(syndicate_s *pool);
 // Implementation
 
 // Public API
-
-#include "guard.h"
 
 SYN_API syndicate_s *syn_create_alloc(int worker_cnt,
                                       int (*worker_fn)(void *data),
