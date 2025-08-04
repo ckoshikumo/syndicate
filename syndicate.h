@@ -165,7 +165,7 @@ SYN_API syndicate_s *syn_create_alloc(int worker_cnt,
 	for (size_t i = 0; i < SYN_QUEUE_N; i++)
 		pool->queues[i] = (syn_task_queue_s) {0};
 
-	for (size_t i = 0; i < worker_cnt; i++)
+	for (int i = 0; i < worker_cnt; i++)
 		pool->workers[i] = twn_thread_create(worker_fn, "twn_worker", pool);
 
 	pool->batches_mutex = twn_mutex_create();
@@ -205,7 +205,7 @@ SYN_API int syn_batch_submit(syndicate_s *pool, syn_task_batch_s batch) {
 
 	twn_atomic_s *count = &entry->task_count;
 	twn_atomic_set(count, 0);
-	int enqueued = 0;
+	size_t enqueued = 0;
 
 	for (size_t i = 0; i < batch.cnt; i++) {
 		syn_task_s *real_task = &batch.tasks[i];
